@@ -13,6 +13,12 @@
         android:theme="@style/Theme.UpcyclingStore"
         tools:targetApi="31">
         <activity
+            android:name=".toolbar"
+            android:exported="false" />
+        <activity
+            android:name=".LobbyActivity"
+            android:exported="false" />
+        <activity
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
