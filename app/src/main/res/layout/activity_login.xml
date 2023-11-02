@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
+        tools:context=".MainActivity"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                app:srcCompat="@drawable/title_header" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                app:srcCompat="@drawable/upcycling"
+                android:layout_gravity="center"
+                app:tint="#FFFFFF" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="UpCycling"
+                android:textSize="50sp"
+                android:paddingTop="280sp"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Store"
+                android:textSize="50sp"
+                android:paddingTop="380sp"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30sp"
+            android:orientation="vertical"
+            >
+            <EditText
+                android:layout_width="400sp"
+                android:paddingLeft="10sp"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:background="@drawable/edittext_box"
+                />
+            <EditText
+                android:layout_marginTop="10sp"
+                android:paddingLeft="10sp"
+                android:layout_width="400sp"
+                android:layout_height="wrap_content"
+                android:text="Password"
+                android:background="@drawable/edittext_box"
+                />
+        </LinearLayout>
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="15sp"
+            android:paddingHorizontal="10sp"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/button_login">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                app:srcCompat="@drawable/button1"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="로그인"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:layout_gravity="center"
+                />
+        </FrameLayout>
+
+
+    </LinearLayout>
+</layout>
