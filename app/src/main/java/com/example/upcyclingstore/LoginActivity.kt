@@ -1,5 +1,6 @@
 package com.example.upcyclingstore
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
@@ -11,5 +12,10 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         b = DataBindingUtil.setContentView(this,R.layout.activity_login)
+
+        b.buttonLogin.setOnClickListener {
+            val intent = Intent(this,LobbyActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

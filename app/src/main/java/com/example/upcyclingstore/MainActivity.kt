@@ -1,7 +1,6 @@
 package com.example.upcyclingstore
 
 import android.content.Intent
-import android.database.DatabaseUtils
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil

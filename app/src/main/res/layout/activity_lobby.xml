@@ -11,14 +11,32 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <include layout="@layout/activity_toolbar"/>
-        <com.google.android.material.carousel.MaskableFrameLayout
+        <include layout="@layout/activity_toolbar"
+            android:id="@+id/header"/>
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewpager"
+            android:layout_gravity="center_horizontal"
+            android:clipToPadding="false"
+            android:clipChildren="false"
             android:layout_width="match_parent"
-            android:layout_height="200sp"
-            android:layout_marginTop="65sp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_height="250sp"
+            android:scaleType="fitXY"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintTop_toBottomOf="@id/header"
+            app:layout_constraintLeft_toLeftOf="@id/header"
+            android:layout_marginTop="-20sp"
             />
+
+        <androidx.constraintlayout.helper.widget.CircularFlow
+            android:id="@+id/indicator"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="bottom"
+            app:layout_constraintTop_toBottomOf="@id/viewpager"
+            app:layout_constraintLeft_toLeftOf="@id/viewpager"
+            android:layout_marginTop="-50sp"/>
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
