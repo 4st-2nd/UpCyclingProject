@@ -13,9 +13,5 @@ import com.example.upcyclingstore.databinding.ActivityMainBinding
 class fragment_image_silde(val image : Int) : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)  {
-        super.onCreate(savedInstanceState)
-        super.onViewCreated(view, savedInstanceState)
-        var images = getView()?.findViewById<ImageView>(R.id.imageslide)
-        images!!.setImageResource(image)
     }
 }
