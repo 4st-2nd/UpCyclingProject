@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <!-- 특정 인증서를 통한 신뢰 설정 가능 -->
+            <!-- <certificates src="res/raw/server_certificate.pem" /> -->
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>
