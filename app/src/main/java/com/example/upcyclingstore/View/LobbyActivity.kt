@@ -1,27 +1,51 @@
 package com.example.upcyclingstore.View
 
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import com.example.upcyclingstore.Controller.ImageSlideAdapter
 import com.example.upcyclingstore.R
-import com.example.upcyclingstore.databinding.ActivityLobbyBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationBarView
 
 
-class LobbyActivity : AppCompatActivity() {
-    lateinit var b : ActivityLobbyBinding
-    private val images = listOf(
-        R.drawable.upcycling,
-        R.drawable.ic_launcher_foreground,
-        R.drawable.header
-    )
-    private val infiniteImageList = mutableListOf<Int>()
+class LobbyActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
+    private lateinit var bottomNavigationView: BottomNavigationView
+    private val lobbyFragment= LobbyFragment()    // 로그인 후 로비
+    private val wasteFragment= WasteFragment()  // 폐기물 거래소
+    private val mypageFragment= MypageFragment()    // 마이페이지
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        b = DataBindingUtil.setContentView(this, R.layout.activity_lobby)
+        setContentView(R.layout.activity_lobby)
 
-        val adapter = ImageSlideAdapter(this, images)
-        b.viewPager2.adapter = adapter
+        bottomNavigationView = findViewById(R.id.bottomNavigationView)
 
+        bottomNavigationView.setOnItemSelectedListener(this)
+        bottomNavigationView.setSelectedItemId(R.id.home)
     }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.home -> {
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.flFragment, lobbyFragment)
+                    .commit()
+                return true
+            }
+            R.id.wastetrade -> {
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.flFragment, wasteFragment)
+                    .commit()
+                return true
+            }
+            R.id.mypage -> {
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.flFragment, mypageFragment)
+                    .commit()
+                return true
+            }
+        }
+        return false
+    }
+
 }

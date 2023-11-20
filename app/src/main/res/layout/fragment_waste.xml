@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".View.WasteFragment">
+
+        <!-- TODO: Update blank fragment layout -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- 재료 등록 버튼 하단 이동 예정           -->
+                    <Button
+                        android:id="@+id/btn_wasteReg"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="2.5"
+                        android:text="재료 등록" />
+
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/search_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconifiedByDefault="false"
+                    app:queryHint="찾고자 하는 폐기물을 입력하시오." />
+
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:columnCount="2"
+                    android:padding="20dp">
+
+                    <!--        <androidx.recyclerview.widget.RecyclerView-->
+                    <!--            android:id="@+id/listItem"-->
+                    <!--            android:layout_width="match_parent"-->
+                    <!--            android:layout_height="match_parent"-->
+                    <!--            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"-->
+                    <!--            app:spanCount="2"-->
+                    <!--            android:orientation="vertical"-->
+                    <!--            />-->
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical|center_horizontal"
+                            android:gravity="center"
+                            android:orientation="vertical">
+                            ">
+
+                            <ImageView
+                                android:layout_width="130dp"
+                                android:layout_height="130dp"
+                                android:src="@drawable/plastic" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="폐기물명"
+                                android:textAlignment="center"
+                                android:textSize="35px"
+                                android:textStyle="bold" />
+
+                            <Button
+                                android:id="@+id/btn_buy"
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:text="구매"
+                                android:textSize="25px" />
+
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical|center_horizontal"
+                            android:gravity="center"
+                            android:orientation="vertical">
+                            ">
+
+                            <ImageView
+                                android:layout_width="130dp"
+                                android:layout_height="130dp"
+                                android:src="@drawable/plastic" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="폐기물명"
+                                android:textAlignment="center"
+                                android:textSize="35px"
+                                android:textStyle="bold" />
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:text="구매"
+                                android:textSize="25px" />
+
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical|center_horizontal"
+                            android:gravity="center"
+                            android:orientation="vertical">
+                            ">
+
+                            <ImageView
+                                android:layout_width="130dp"
+                                android:layout_height="130dp"
+                                android:src="@drawable/plastic" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="폐기물명"
+                                android:textAlignment="center"
+                                android:textSize="35px"
+                                android:textStyle="bold" />
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:text="구매"
+                                android:textSize="25px" />
+
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical|center_horizontal"
+                            android:gravity="center"
+                            android:orientation="vertical">
+                            ">
+
+                            <ImageView
+                                android:layout_width="130dp"
+                                android:layout_height="130dp"
+                                android:src="@drawable/plastic" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="폐기물명"
+                                android:textAlignment="center"
+                                android:textSize="35px"
+                                android:textStyle="bold" />
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:text="구매"
+                                android:textSize="25px" />
+
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical|center_horizontal"
+                            android:gravity="center"
+                            android:orientation="vertical">
+                            ">
+
+                            <ImageView
+                                android:layout_width="130dp"
+                                android:layout_height="130dp"
+                                android:src="@drawable/plastic" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="폐기물명"
+                                android:textAlignment="center"
+                                android:textSize="35px"
+                                android:textStyle="bold" />
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:text="구매"
+                                android:textSize="25px" />
+
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical|center_horizontal"
+                            android:gravity="center"
+                            android:orientation="vertical">
+                            ">
+
+                            <ImageView
+                                android:layout_width="130dp"
+                                android:layout_height="130dp"
+                                android:src="@drawable/plastic" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="폐기물명"
+                                android:textAlignment="center"
+                                android:textSize="35px"
+                                android:textStyle="bold" />
+
+                            <Button
+
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:text="구매"
+                                android:textSize="25px" />
+
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </GridLayout>
+
+
+            </LinearLayout>
+        </ScrollView>
+
+    </FrameLayout>
+</layout>
