@@ -16,10 +16,10 @@ class RegisterActivity : AppCompatActivity() {
 
         b.btnReg.setOnClickListener {
             val jsonData = JSONObject()
-            jsonData.put("Name", b.edtName.text.toString())
-            jsonData.put("Password", b.edtPass.text.toString())
-            jsonData.put("Email", b.edtEmail.text.toString())
-            jsonData.put("Date", b.edtDate.text.toString())
+            jsonData.put("m_username", b.edtName.text.toString())
+            jsonData.put("m_password", b.edtPass.text.toString())
+            jsonData.put("m_email", b.edtEmail.text.toString())
+            jsonData.put("m_date", b.edtDate.text.toString())
 
             var send = SendDataToServer()
             send.sendToServer(jsonData,applicationContext)

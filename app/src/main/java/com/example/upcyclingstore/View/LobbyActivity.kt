@@ -22,6 +22,8 @@ class LobbyActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListe
 
         bottomNavigationView.setOnItemSelectedListener(this)
         bottomNavigationView.setSelectedItemId(R.id.home)
+
+
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

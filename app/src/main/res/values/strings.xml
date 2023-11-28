@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">UpcyclingStore</string>
+    <string name="php_address">http://10.0.2.2:80/test.php</string>
 </resources>
