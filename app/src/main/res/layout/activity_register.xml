@@ -73,15 +73,13 @@
                     android:paddingTop="15sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Data of Birth"
+                    android:text="PassWord"
                     android:textSize="20sp"/>
                 <EditText
                     android:layout_width="match_parent"
                     android:paddingStart="10sp"
                     android:layout_height="40sp"
-                    android:hint="YY / MM / DD"
-                    android:inputType="date"
-                    android:id="@+id/edt_Date"
+                    android:id="@+id/edt_Pass"
                     android:background="@drawable/edittext_box"
                     />
                 <TextView
@@ -103,7 +101,7 @@
                     android:paddingTop="15sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="PassWord"
+                    android:text="NickName"
                     android:textSize="20sp"/>
                 <EditText
                     tools:ignore="SpeakableTextPresentCheck"
@@ -111,7 +109,7 @@
                     android:paddingStart="10sp"
                     android:layout_height="40sp"
                     android:inputType="textPassword"
-                    android:id="@+id/edt_Pass"
+                    android:id="@+id/edt_Nick"
                     android:background="@drawable/edittext_box"
                     />
                 <Button

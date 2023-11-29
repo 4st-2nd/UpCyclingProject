@@ -11,9 +11,14 @@ import com.example.upcyclingstore.R
 import com.example.upcyclingstore.databinding.ActivityLoginBinding
 import org.json.JSONObject
 
-
-class LoginActivity : AppCompatActivity() {
-
+interface LoginCallback {
+    fun onFunctionCall()
+}
+class LoginActivity : AppCompatActivity(),LoginCallback {
+    override fun onFunctionCall() {
+        val intent = Intent(this, LobbyActivity::class.java)
+        startActivity(intent)
+    }
     lateinit var b : ActivityLoginBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,13 +32,9 @@ class LoginActivity : AppCompatActivity() {
             else
             {
                 val jsonData = JSONObject()
-                jsonData.put("m_username", b.btnName.text.toString())
-                jsonData.put("m_password", b.btnPw.text.toString())
+                jsonData.put("query", "SELECT * FROM User WHERE email = '${b.btnName.text.toString()}' AND password = '${b.btnPw.text.toString()}'")
 
-                var receive = ReceiveLoginData()
-                receive.ReceiveLoginData(jsonData,applicationContext)
-                //val intent = Intent(this, LobbyActivity::class.java)
-                //startActivity(intent)
+                ReceiveLoginData.receive(jsonData,applicationContext,this)
             }
         }
     }

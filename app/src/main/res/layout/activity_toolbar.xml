@@ -7,18 +7,36 @@
     android:layout_height="wrap_content"
     tools:context=".View.toolbar">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <ImageView
+        android:adjustViewBounds="true"
+        android:src="@drawable/header"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/img_header"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <ImageView
+        android:adjustViewBounds="true"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:src="@drawable/menu"
+        android:layout_marginStart="20sp"
+        app:tint="#D5D5D5"
+        app:layout_constraintLeft_toLeftOf="@id/img_header"
+        app:layout_constraintTop_toTopOf="@id/img_header"
+        app:layout_constraintBottom_toBottomOf="@id/img_header"
+        />
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:titleTextColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-    </androidx.appcompat.widget.Toolbar>
+        android:text="UpCycling"
+        android:textColor="#FFFFFF"
+        android:textSize="40sp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@id/img_header"
+        app:layout_constraintRight_toRightOf="@id/img_header"
+        app:layout_constraintLeft_toLeftOf="@id/img_header"
+        app:layout_constraintTop_toTopOf="@id/img_header"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
