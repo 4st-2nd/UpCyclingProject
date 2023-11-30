@@ -80,6 +80,7 @@
                     android:paddingStart="10sp"
                     android:layout_height="40sp"
                     android:id="@+id/edt_Pass"
+                    android:inputType="textPassword"
                     android:background="@drawable/edittext_box"
                     />
                 <TextView
@@ -108,7 +109,6 @@
                     android:layout_width="match_parent"
                     android:paddingStart="10sp"
                     android:layout_height="40sp"
-                    android:inputType="textPassword"
                     android:id="@+id/edt_Nick"
                     android:background="@drawable/edittext_box"
                     />

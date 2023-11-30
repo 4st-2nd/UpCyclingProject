@@ -40,6 +40,7 @@ android {
 dependencies {
     // 사용한 라이브러리 :
     //  okhttp , viewpager2
+    implementation ("com.google.code.gson:gson:2.10.1")
     implementation ("com.squareup.okhttp3:okhttp:4.9.1")
     implementation ("androidx.viewpager2:viewpager2:1.0.0")
     implementation("androidx.core:core-ktx:1.9.0")

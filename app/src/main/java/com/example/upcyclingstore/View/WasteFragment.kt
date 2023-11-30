@@ -1,21 +1,38 @@
 package com.example.upcyclingstore.View
 
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.upcyclingstore.Controller.ReceiveProductData
+import com.example.upcyclingstore.Controller.RecyclerAdapter
 import com.example.upcyclingstore.R
 import com.example.upcyclingstore.databinding.FragmentWasteBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import org.json.JSONObject
 
 /**
  * A simple [Fragment] subclass.
  * Use the [WasteFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class WasteFragment : Fragment() {
+
+interface WasteCallback {
+    fun onFunctionCall(data: List<RecyclerAdapter.MyItem>)
+}
+class WasteFragment : Fragment(),WasteCallback {
+    override fun onFunctionCall(data: List<RecyclerAdapter.MyItem>) {
+        val adapter = RecyclerAdapter(data)
+        binding.recycler.adapter = adapter
+    }
     private lateinit var binding:FragmentWasteBinding
     private lateinit var bottomSheetDialog: BottomSheetDialog
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,19 +47,18 @@ class WasteFragment : Fragment() {
         binding = FragmentWasteBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        val bottomSheetView = inflater.inflate(R.layout.waste_bottomsheet, null)
-        bottomSheetDialog = BottomSheetDialog(requireContext(), R.style.BottomSheetDialogTheme)
-        bottomSheetDialog.setContentView(bottomSheetView)
+        //Grid 설정
+        val layoutManager = GridLayoutManager(requireContext(), 2)
+        binding.recycler.layoutManager = layoutManager
 
-        binding.btnBuy.setOnClickListener {
-            bottomSheetDialog.show()
-        }
 
-        bottomSheetView.findViewById<ImageView>(R.id.btn_close).setOnClickListener {
-            bottomSheetDialog.dismiss()
-        }
+        val jsonData = JSONObject()
+        jsonData.put("query", "SELECT * FROM Product")
+
+        ReceiveProductData.receive(jsonData,requireContext(),this)
 
         return view
     }
+
 
 }
