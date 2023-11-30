@@ -1,6 +1,7 @@
 package com.example.upcyclingstore.View
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -12,10 +13,16 @@ import com.example.upcyclingstore.databinding.ActivityLoginBinding
 import org.json.JSONObject
 
 interface LoginCallback {
-    fun onFunctionCall()
+    fun onFunctionCall(data: JSONObject)
 }
 class LoginActivity : AppCompatActivity(),LoginCallback {
-    override fun onFunctionCall() {
+    override fun onFunctionCall(data: JSONObject) {
+        val editor: SharedPreferences.Editor = getSharedPreferences("session", MODE_PRIVATE).edit()
+        editor.putString("username", data.getString("username"))
+        editor.putString("name", data.getString("name"))
+        editor.putString("email", data.getString("email"))
+        editor.apply()
+
         val intent = Intent(this, LobbyActivity::class.java)
         startActivity(intent)
     }

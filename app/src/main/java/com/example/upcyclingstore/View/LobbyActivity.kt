@@ -2,16 +2,14 @@ package com.example.upcyclingstore.View
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import com.example.upcyclingstore.Controller.ImageSlideAdapter
 import com.example.upcyclingstore.R
-import com.example.upcyclingstore.databinding.ActivityLobbyBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
 
 
-    class LobbyActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
+class LobbyActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
         private lateinit var bottomNavigationView: BottomNavigationView
         private val lobbyFragment = LobbyFragment()    // 로그인 후 로비
         private val wasteFragment = WasteFragment()  // 폐기물 거래소
@@ -25,6 +23,8 @@ import com.google.android.material.navigation.NavigationBarView
 
             bottomNavigationView.setOnItemSelectedListener(this)
             bottomNavigationView.setSelectedItemId(R.id.home)
+
+
         }
 
         override fun onNavigationItemSelected(item: MenuItem): Boolean {

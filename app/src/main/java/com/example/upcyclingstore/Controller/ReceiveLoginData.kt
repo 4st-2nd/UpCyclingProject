@@ -1,8 +1,9 @@
 package com.example.upcyclingstore.Controller
 
 import android.content.Context
+import android.content.Context.MODE_PRIVATE
+import android.content.SharedPreferences
 import android.widget.Toast
-import com.example.upcyclingstore.View.LoginActivity
 import com.example.upcyclingstore.View.LoginCallback
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -13,6 +14,7 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
 import org.json.JSONObject
+
 
 class ReceiveLoginData {
     companion object {
@@ -50,7 +52,7 @@ class ReceiveLoginData {
                         if (jsonObject.has("status"))
                             Toast.makeText(context, "존재하지않는 계정입니다.", Toast.LENGTH_SHORT).show()
                         else
-                            callback.onFunctionCall()
+                            callback.onFunctionCall(jsonObject)
                     }
                 } catch (e: Exception) {
                     e.printStackTrace()
