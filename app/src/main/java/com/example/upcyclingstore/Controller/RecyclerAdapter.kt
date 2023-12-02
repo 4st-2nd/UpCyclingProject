@@ -1,6 +1,8 @@
 package com.example.upcyclingstore.Controller
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +16,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 class RecyclerAdapter(private val data: List<MyItem>) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
     // 데이터 아이템의 모델 클래스
-    data class MyItem(val text: String, val imageResId: Int)
+    data class MyItem(val text: String, val imagebm: Bitmap)
 
     // 뷰홀더 클래스 정의
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -35,7 +37,7 @@ class RecyclerAdapter(private val data: List<MyItem>) : RecyclerView.Adapter<Rec
 
         // 데이터를 뷰에 바인딩
         holder.itemTextView.text = item.text
-        holder.itemImageView.setImageResource(item.imageResId)
+        holder.itemImageView.setImageBitmap(item.imagebm)
 
         // 버튼에 클릭 리스너 설정 등 추가 작업 가능
         holder.itemButton.setOnClickListener {

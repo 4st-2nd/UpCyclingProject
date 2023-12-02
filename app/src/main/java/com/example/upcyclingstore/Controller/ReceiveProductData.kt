@@ -1,6 +1,10 @@
 package com.example.upcyclingstore.Controller
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.util.Base64
+import android.util.Log
 import android.widget.Toast
 import com.example.upcyclingstore.R
 import com.example.upcyclingstore.View.LoginCallback
@@ -41,14 +45,20 @@ class ReceiveProductData {
                     // 응답 받기
                     val response = OkHttpClient().newCall(request).execute()
                     val responseBody = response.body?.string() ?: ""
+                    Log.d("check",responseBody)
                     val jsonArray: JsonArray = JsonParser.parseString(responseBody).asJsonArray
 
                     withContext(Dispatchers.Main)
                     {
                         val data = mutableListOf<RecyclerAdapter.MyItem>()
+                        var image: Bitmap
                         for(i:Int in 0..jsonArray.size() - 1)
                         {
-                            data.add(RecyclerAdapter.MyItem(jsonArray.get(i).asJsonObject.get("title").toString(),  R.mipmap.ic_launcher))
+                            if(jsonArray.get(i).asJsonObject.has("image"))
+                                image = base64ToBitmap(jsonArray.get(i).asJsonObject.get("image").toString())
+                            else
+                                image = getBitmapFromResource(context,R.drawable.ic_launcher_foreground)
+                            data.add(RecyclerAdapter.MyItem(jsonArray.get(i).asJsonObject.get("title").toString(),  image))
                         }
                         callback.onFunctionCall(data)
                     }
@@ -57,6 +67,15 @@ class ReceiveProductData {
                 }
             }
             return
+        }
+
+        private fun base64ToBitmap(base64String: String): Bitmap {
+            val decodedBytes = Base64.decode(base64String, Base64.DEFAULT)
+            return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.size)
+        }
+
+        fun getBitmapFromResource(context: Context, resourceId: Int): Bitmap {
+            return BitmapFactory.decodeResource(context.resources, resourceId)
         }
     }
 }

@@ -68,6 +68,7 @@
                     android:layout_height="40sp"
                     android:id="@+id/edt_Name"
                     android:background="@drawable/edittext_box"
+                    android:privateImeOptions="defaultInputmode=korean"
                     />
                 <TextView
                     android:paddingTop="15sp"
@@ -97,6 +98,7 @@
                     android:inputType="textEmailAddress"
                     android:id="@+id/edt_Email"
                     android:background="@drawable/edittext_box"
+                    android:privateImeOptions="defaultInputmode=english"
                     />
                 <TextView
                     android:paddingTop="15sp"
@@ -111,6 +113,7 @@
                     android:layout_height="40sp"
                     android:id="@+id/edt_Nick"
                     android:background="@drawable/edittext_box"
+                    android:privateImeOptions="defaultInputmode=korean"
                     />
                 <Button
                     android:layout_marginTop="15sp"

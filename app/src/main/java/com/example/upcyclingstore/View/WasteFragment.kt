@@ -1,20 +1,13 @@
 package com.example.upcyclingstore.View
 
-import android.content.Context
-import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.upcyclingstore.Controller.ReceiveProductData
 import com.example.upcyclingstore.Controller.RecyclerAdapter
-import com.example.upcyclingstore.R
 import com.example.upcyclingstore.databinding.FragmentWasteBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import org.json.JSONObject
@@ -53,7 +46,7 @@ class WasteFragment : Fragment(),WasteCallback {
 
 
         val jsonData = JSONObject()
-        jsonData.put("query", "SELECT * FROM Product")
+        jsonData.put("query", "SELECT * FROM Waste")
 
         ReceiveProductData.receive(jsonData,requireContext(),this)
 

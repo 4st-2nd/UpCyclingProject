@@ -24,11 +24,13 @@ class SendDataToServer {
             val url: String = "http://61.245.246.227:8089/send.php"
             GlobalScope.launch(Dispatchers.IO) {
                 try {
+                    val jsonString = jsonData.toString()
+                    val utf8Bytes = jsonString.toByteArray(Charsets.UTF_8)
                     // HTTP 요청 생성
                     val requestBody =
                         RequestBody.create(
                             "application/json; charset=utf-8".toMediaType(),
-                            jsonData.toString()
+                            utf8Bytes
                         )
                     val request = Request.Builder()
                         .url(url)
