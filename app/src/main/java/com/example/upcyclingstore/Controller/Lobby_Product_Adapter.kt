@@ -1,20 +1,18 @@
 package com.example.upcyclingstore.Controller
 
-import android.content.Context
+import android.graphics.Bitmap
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.upcyclingstore.R
-import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class Lobby_Product_Adapter(private val data: List<LobbyItem>) : RecyclerView.Adapter<Lobby_Product_Adapter.ViewHolder>() {
 
     // 데이터 아이템의 모델 클래스
-    data class LobbyItem(val title: String, val description: String, val image: Int, val review: Int, val score: Float, val price: Int)
+    data class LobbyItem(val title: String, val description: String, val image: Bitmap, val review: Int, val score: Float, val price: Int)
 
     // 뷰홀더 클래스 정의
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -37,7 +35,7 @@ class Lobby_Product_Adapter(private val data: List<LobbyItem>) : RecyclerView.Ad
 
         // 데이터를 뷰에 바인딩
         holder.item_title.text = item.title
-        holder.item_image.setImageResource(item.image)
+        holder.item_image.setImageBitmap(item.image)
         holder.item_price.text = item.price.toString()
         holder.item_score.text = item.score.toString()
         holder.item_review.text = item.review.toString()
