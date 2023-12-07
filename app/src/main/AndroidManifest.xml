@@ -23,6 +23,9 @@
             android:name=".View.toolbar"
             android:exported="false" />
         <activity
+            android:name=".View.DetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".View.LobbyActivity"
             android:exported="false" />
         <activity

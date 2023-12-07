@@ -1,13 +1,21 @@
 package com.example.upcyclingstore.Controller
 
+import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
+import android.text.Layout
+import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.upcyclingstore.R
+import com.example.upcyclingstore.View.DetailActivity
+import com.example.upcyclingstore.View.RegisterActivity
+import java.io.ByteArrayOutputStream
 
 class Lobby_Product_Adapter(private val data: List<LobbyItem>) : RecyclerView.Adapter<Lobby_Product_Adapter.ViewHolder>() {
 
@@ -21,6 +29,7 @@ class Lobby_Product_Adapter(private val data: List<LobbyItem>) : RecyclerView.Ad
         val item_price: TextView = itemView.findViewById(R.id.lobby_product_price)
         val item_review: TextView = itemView.findViewById(R.id.lobby_product_review)
         val item_score: TextView = itemView.findViewById(R.id.lobby_product_score)
+        val full:View = itemView.findViewById(R.id.full)
     }
 
     // onCreateViewHolder: 뷰홀더 생성
@@ -41,12 +50,29 @@ class Lobby_Product_Adapter(private val data: List<LobbyItem>) : RecyclerView.Ad
         holder.item_review.text = item.review.toString()
 
         // 버튼에 클릭 리스너 설정 등 추가 작업 가능
+        holder.full.setOnClickListener {
+            val intent = Intent(holder.full.context, DetailActivity::class.java)
+            intent.putExtra("title",item.title)
+            intent.putExtra("image",encodeImageToBase64(item.image))
+            intent.putExtra("price",item.price.toString())
+            intent.putExtra("score",item.score.toString())
+            intent.putExtra("review",item.review.toString())
+            intent.putExtra("description",item.description)
+            holder.full.context.startActivity(intent)
+        }
 
     }
 
     // getItemCount: 아이템 개수 반환
     override fun getItemCount(): Int {
         return data.size
+    }
+    private fun encodeImageToBase64(bitmap: Bitmap): String {
+        val byteArrayOutputStream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
+        val byteArray = byteArrayOutputStream.toByteArray()
+
+        return Base64.encodeToString(byteArray, Base64.DEFAULT)
     }
 
 }
