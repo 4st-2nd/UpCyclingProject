@@ -38,6 +38,7 @@
                     android:id="@+id/search_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:imeOptions="actionSearch"
                     app:iconifiedByDefault="false"
                     app:queryHint="찾고자 하는 폐기물을 입력하시오." />
 

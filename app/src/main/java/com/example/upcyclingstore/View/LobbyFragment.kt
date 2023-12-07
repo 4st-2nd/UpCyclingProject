@@ -53,7 +53,7 @@ class LobbyFragment : Fragment(), LobbyCallback{
         b.lobbyProduct.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
         val jsonData = JSONObject()
-        jsonData.put("query", "SELECT * FROM Product")
+        jsonData.put("query", "SELECT * FROM `Product` ORDER BY score DESC, review DESC;")
 
         ReceiveLobbyProduct.receive(jsonData,requireContext(),this)
         return b.root

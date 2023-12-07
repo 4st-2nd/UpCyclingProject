@@ -1,9 +1,12 @@
 package com.example.upcyclingstore.View
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.upcyclingstore.Controller.ReceiveProductData
@@ -46,11 +49,39 @@ class WasteFragment : Fragment(),WasteCallback {
 
 
         val jsonData = JSONObject()
-        jsonData.put("query", "SELECT * FROM Waste")
-
+        val search = binding.searchView.getQuery().toString()
+        Log.d("tag",search)
+        //페이지에 다시 돌아와도 검색창에 텍스트가 있나 없나
+        if(search == "")
+            jsonData.put("query", "SELECT * FROM Waste")
+        else
+            jsonData.put("query", "SELECT * FROM Waste WHERE title LIKE('%$search%');")
         ReceiveProductData.receive(jsonData,requireContext(),this)
-
+        initSearchView(this)
         return view
+    }
+    private fun initSearchView(callback: WasteCallback)
+    {
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener
+        {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                val jsonData = JSONObject()
+                if(query == "")
+                    jsonData.put("query", "SELECT * FROM Waste")
+                else
+                    jsonData.put("query", "SELECT * FROM Waste WHERE title LIKE('%$query%');")
+
+                ReceiveProductData.receive(jsonData,requireContext(),callback)
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if(newText.equals("")){
+                    this.onQueryTextSubmit("");
+                }
+                return true
+            }
+        })
     }
 
 
