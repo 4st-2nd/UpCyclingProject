@@ -33,7 +33,7 @@ class RegisterActivity : AppCompatActivity(), RegisterCallback {
                     "INSERT INTO User (username,password,email,name) VALUES ('${b.edtName.text.toString()}','${b.edtPass.text.toString()}','${b.edtEmail.text.toString()}','${b.edtNick.text.toString()}')"
                 )
 
-                SendDataToServer.send(jsonData, applicationContext, this)
+                SendDataToServer.send(jsonData, this)
             }
         }
     }

@@ -7,7 +7,6 @@ import android.util.Base64
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import com.example.upcyclingstore.R
-import com.example.upcyclingstore.View.ProductCallback
 import com.example.upcyclingstore.View.WasteCallback
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
@@ -22,11 +21,11 @@ import okhttp3.Request
 import okhttp3.RequestBody
 import org.json.JSONObject
 
-class ReceiveProductData {
+class ReceiveWasteData {
     companion object {
         public fun receive(
             jsonData: JSONObject, context: Context,
-            callback: ProductCallback
+            callback: WasteCallback
         ) {
 
             val url = "http://61.245.246.227:8089/receive_array.php"

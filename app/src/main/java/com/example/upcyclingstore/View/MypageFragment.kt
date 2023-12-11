@@ -32,6 +32,7 @@ class MypageFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         b = DataBindingUtil.inflate(inflater, R.layout.fragment_mypage, container, false)
+
         val context: Context = requireActivity()
         val prefs: SharedPreferences = context.getSharedPreferences("session", Context.MODE_PRIVATE)
         val username = prefs.getString("username", "이름 오류")

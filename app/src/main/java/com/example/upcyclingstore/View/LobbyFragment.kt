@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.upcyclingstore.Controller.ImageSlideAdapter
 import com.example.upcyclingstore.Controller.Lobby_Product_Adapter
 import com.example.upcyclingstore.Controller.ReceiveLobbyProduct
-import com.example.upcyclingstore.Controller.ReceiveProductData
 import com.example.upcyclingstore.R
 import com.example.upcyclingstore.databinding.FragmentLobbyBinding
 import org.json.JSONObject

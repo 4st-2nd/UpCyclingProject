@@ -1,16 +1,8 @@
 package com.example.upcyclingstore.Controller
 
-import android.content.Context
-import android.graphics.Bitmap
-import android.provider.Settings.Global.getString
-import android.util.Base64
 import android.util.Log
-import android.widget.ImageView
-import android.widget.Toast
-import androidx.core.graphics.drawable.toBitmap
-import com.example.upcyclingstore.R
-import com.example.upcyclingstore.View.LoginCallback
 import com.example.upcyclingstore.View.RegisterCallback
+import com.example.upcyclingstore.View.WriteProductCallback
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -20,13 +12,11 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
 import org.json.JSONObject
-import org.json.JSONTokener
-import java.io.ByteArrayOutputStream
 
-class SendDataToServer {
+class SendProductToServer {
     companion object {
-        public fun send(jsonData: JSONObject, callback:RegisterCallback) {
-            val url: String = "http://61.245.246.227:8089/send.php"
+        public fun send(jsonData: JSONObject, callback: WriteProductCallback) {
+            val url: String = "http://61.245.246.227:8089/send_product.php"
             GlobalScope.launch(Dispatchers.IO) {
                 try {
                     val jsonString = jsonData.toString()
@@ -45,7 +35,7 @@ class SendDataToServer {
                     // 응답 받기
                     val response = OkHttpClient().newCall(request).execute()
                     val responseBody = response.body?.string() ?: ""
-
+                    Log.d("tag",responseBody)
                     val jsonObject = JSONObject(responseBody) //json 파싱
                     // UI 스레드에서 결과 처리
                     withContext(Dispatchers.Main) {

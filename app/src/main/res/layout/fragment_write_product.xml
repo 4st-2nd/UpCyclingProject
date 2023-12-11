@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="15sp"
+        android:paddingHorizontal="15sp"
+        android:fillViewport="true"
+        tools:context=".View.WriteProductFragment"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/parent">
+
+            <TextView
+                android:id="@+id/txt_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="상품 이름"
+                android:textColor="@color/text_main"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="@+id/parent"
+                app:layout_constraintTop_toTopOf="@+id/parent" />
+
+            <EditText
+                android:id="@+id/edt_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15sp"
+                app:layout_constraintLeft_toLeftOf="@+id/txt_title"
+                app:layout_constraintTop_toBottomOf="@+id/txt_title" />
+
+            <TextView
+                android:id="@+id/txt_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="가격"
+                android:textColor="@color/text_main"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="@+id/parent"
+                app:layout_constraintTop_toBottomOf="@+id/edt_title" />
+
+            <EditText
+                android:id="@+id/edt_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15sp"
+                android:inputType="number"
+                app:layout_constraintLeft_toLeftOf="@+id/txt_title"
+                app:layout_constraintTop_toBottomOf="@+id/txt_price" />
+
+            <TextView
+                android:id="@+id/txt_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="상품 설명"
+                android:textColor="@color/text_main"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="@+id/parent"
+                app:layout_constraintTop_toBottomOf="@+id/edt_price"/>
+
+            <EditText
+                android:id="@+id/edt_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15sp"
+                app:layout_constraintLeft_toLeftOf="@+id/txt_title"
+                app:layout_constraintTop_toBottomOf="@+id/txt_description" />
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="250sp"
+                android:layout_height="250sp"
+                android:src="@drawable/ic_launcher_foreground"
+                app:layout_constraintLeft_toLeftOf="@+id/edt_description"
+                app:layout_constraintTop_toBottomOf="@+id/edt_description" />
+
+            <Button
+                android:id="@+id/btn_imageUpload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이미지 업로드"
+                app:layout_constraintVertical_weight="1"
+                app:layout_constraintLeft_toLeftOf="@+id/image"
+                app:layout_constraintTop_toBottomOf="@+id/image" />
+            <TextView
+                android:layout_width="0sp"
+                android:layout_height="100sp"
+                app:layout_constraintVertical_weight="1"
+                app:layout_constraintTop_toBottomOf="@+id/btn_imageUpload"
+                app:layout_constraintLeft_toLeftOf="@id/btn_imageUpload"/>
+
+            <Button
+                android:id="@+id/btn_Upload"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="상품 등록"
+                app:layout_constraintBottom_toBottomOf="@+id/parent"
+                app:layout_constraintRight_toRightOf="@+id/parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</layout>

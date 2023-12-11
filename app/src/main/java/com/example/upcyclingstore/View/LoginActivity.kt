@@ -21,6 +21,7 @@ class LoginActivity : AppCompatActivity(),LoginCallback {
         editor.putString("username", data.getString("username"))
         editor.putString("name", data.getString("name"))
         editor.putString("email", data.getString("email"))
+        editor.putString("userID", data.getString("userID"))
         editor.apply()
 
         val intent = Intent(this, LobbyActivity::class.java)

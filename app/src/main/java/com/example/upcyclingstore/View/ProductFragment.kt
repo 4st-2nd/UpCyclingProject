@@ -8,10 +8,11 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.upcyclingstore.Controller.ReceiveProductData
 import com.example.upcyclingstore.Controller.ReceiveWasteData
 import com.example.upcyclingstore.Controller.RecyclerAdapter
-import com.example.upcyclingstore.databinding.FragmentWasteBinding
-import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.example.upcyclingstore.R
+import com.example.upcyclingstore.databinding.FragmentProductBinding
 import org.json.JSONObject
 
 /**
@@ -20,17 +21,17 @@ import org.json.JSONObject
  * create an instance of this fragment.
  */
 
-interface WasteCallback {
+interface ProductCallback {
     fun onFunctionCall(data: List<RecyclerAdapter.MyItem>)
 }
-class WasteFragment : Fragment(),WasteCallback {
+class ProductFragment : Fragment(),ProductCallback {
     var search: String = ""
     override fun onFunctionCall(data: List<RecyclerAdapter.MyItem>) {
         val adapter = RecyclerAdapter(data)
         binding.recycler.adapter = adapter
     }
-    private lateinit var binding:FragmentWasteBinding
-    private lateinit var bottomSheetDialog: BottomSheetDialog
+
+    private lateinit var binding: FragmentProductBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -40,36 +41,47 @@ class WasteFragment : Fragment(),WasteCallback {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentWasteBinding.inflate(inflater, container, false)
+        binding = FragmentProductBinding.inflate(inflater, container, false)
         val view = binding.root
 
         //Grid 설정
         val layoutManager = GridLayoutManager(requireContext(), 2)
         binding.recycler.layoutManager = layoutManager
 
+        //등록 버튼 리스너
+        binding.btnProductReg.setOnClickListener {
+            val newFragment = WriteProductFragment()
+        // 프래그먼트 트랜잭션 시작
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+        // 트랜잭션에 새로운 프래그먼트 추가
+            transaction.replace(R.id.flFragment, newFragment)
+        // 백 스택에 추가하여 사용자가 뒤로가기 버튼을 눌렀을 때 이전 프래그먼트로 돌아갈 수 있도록 함
+            transaction.addToBackStack("product")
+        // 트랜잭션 커밋
+            transaction.commit()
+        }
+
+        //서치뷰 리스너 작동 + 쿼리문 전달
         initSearchView(this)
         val jsonData = JSONObject()
-        jsonData.put("query", "SELECT * FROM Waste WHERE title LIKE('%$search%');")
-        ReceiveWasteData.receive(jsonData,requireContext(),this)
+        //페이지에 다시 돌아와도 검색창에 텍스트가 있나 없나
+        jsonData.put("query", "SELECT * FROM Product WHERE title LIKE('%$search%');")
+        ReceiveProductData.receive(jsonData, requireContext(), this)
         return view
     }
-    private fun initSearchView(callback: WasteCallback)
-    {
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener
-        {
+
+    private fun initSearchView(callback: ProductCallback) {
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 val jsonData = JSONObject()
-                if(query == "")
-                    jsonData.put("query", "SELECT * FROM Waste")
-                else
-                    jsonData.put("query", "SELECT * FROM Waste WHERE title LIKE('%$query%');")
+                jsonData.put("query", "SELECT * FROM Product WHERE title LIKE('%$query%');")
 
-                ReceiveWasteData.receive(jsonData,requireContext(),callback)
+                ReceiveProductData.receive(jsonData, requireContext(), callback)
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                if(newText.equals("")){
+                if (newText.equals("")) {
                     this.onQueryTextSubmit("");
                 }
                 if (newText != null) {
@@ -79,6 +91,4 @@ class WasteFragment : Fragment(),WasteCallback {
             }
         })
     }
-
-
 }
