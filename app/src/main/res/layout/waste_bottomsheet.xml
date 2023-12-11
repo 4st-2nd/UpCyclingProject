@@ -1,83 +1,210 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/dialog_background"
+    android:padding="20dp"
     android:orientation="vertical"
-    app:behavior_hideable="true"
     app:behavior_draggable="true"
+    app:behavior_hideable="true"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
     <ImageView
         android:layout_width="70dp"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_round_remove_24"
+        android:layout_gravity="center|top"
         android:scaleType="centerCrop"
-        android:layout_gravity="center|top" />
+        android:src="@drawable/ic_round_remove_24" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:orientation="horizontal">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="16dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/plastic" />
+
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txt_ID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="2dp"
+                android:padding="2dp"
+                android:text="판매자 아이디"
+                android:textAlignment="viewStart"
+                android:textColor="#314A3D"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/txt_TITLE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="11dp"
+                android:paddingLeft="2dp"
+                android:paddingBottom="8dp"
+                android:text="폐기물명"
+                android:textAlignment="viewStart"
+                android:textColor="#314A3D"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/txt_PRICE"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="bottom|right"
+                android:text="가격"
+                android:textSize="20sp"
+                android:textColor="#0C5E0F" />
+
+            <ImageView
+                android:id="@+id/btn_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:src="@drawable/ic_baseline_clear_24" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginTop="25dp"
+        android:layout_centerInParent="true"
+        android:background="#314A3D" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAlignment="viewStart"
-            android:text="구매"
-            android:textSize="25sp"
-            android:padding="8dp"
-            android:textColor="#0C5E0F"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="5dp"/>
-
-        <ImageView
-            android:id="@+id/btn_close"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="250dp"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/ic_baseline_clear_24"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="10dp"
-        android:layout_marginTop="10dp">
-        
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
             android:text="수량 선택"
-            android:textColor="#0C5E0F"/>
+            android:textSize="20sp"
+            android:textColor="#0C5E0F" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="10dp"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:padding="5dp"
+        android:orientation="horizontal">
 
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="금액표시"
-            android:textColor="#0C5E0F"/>
+            android:orientation="horizontal"
+            android:padding="2dp">
+
+            <Button
+                android:id="@+id/btn_cntSub"
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:layout_margin="3dp"
+                android:text="-"
+                android:textSize="23sp"
+                android:background="@drawable/button_waste_count"/>
+            <TextView
+                android:id="@+id/waste_quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_margin="3dp"
+                android:text="숫자"
+                android:textColor="@color/black"
+                android:textSize="25sp"/>
+            <Button
+                android:id="@+id/btn_cntAdd"
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:layout_margin="3dp"
+                android:text="+"
+                android:textSize="23sp"
+                android:background="@drawable/button_waste_count"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center|right"
+            android:paddingRight="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="#0C5E0F"
+                android:text="총 상품금액"/>
+
+        </LinearLayout>
     </LinearLayout>
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="10dp"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/addToCartBtn"
+            style="@android:style/Widget.Button"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="기타"
-            android:textColor="#0C5E0F"/>
+            android:layout_weight="5"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/green_btn"
+            android:text="장바구니 담기"
+            android:textColor="@color/white" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button2"
+            style="@android:style/Widget.Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/green_btn"
+            android:text="구매하기"
+            android:textColor="@color/white"
+            />
+
+
     </LinearLayout>
 
 

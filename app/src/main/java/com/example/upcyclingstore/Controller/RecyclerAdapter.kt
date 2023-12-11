@@ -16,13 +16,17 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 class RecyclerAdapter(private val data: List<MyItem>) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
     // 데이터 아이템의 모델 클래스
-    data class MyItem(val text: String, val imagebm: Bitmap)
+    data class MyItem(val title: String, val imagebm: Bitmap, val price: String,val nick: String)
 
     // 뷰홀더 클래스 정의
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val itemTextView: TextView = itemView.findViewById(R.id.wasteName)
         val itemButton: Button = itemView.findViewById(R.id.btn_buy)
         val itemImageView: ImageView = itemView.findViewById(R.id.wasteImg)
+        lateinit var title: String
+        lateinit var price: String
+        lateinit var nick: String
+        lateinit var image: Bitmap
     }
 
     // onCreateViewHolder: 뷰홀더 생성
@@ -34,14 +38,17 @@ class RecyclerAdapter(private val data: List<MyItem>) : RecyclerView.Adapter<Rec
     // onBindViewHolder: 뷰홀더에 데이터 바인딩
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = data[position]
-
+        holder.title = item.title
+        holder.image = item.imagebm
+        holder.price = item.price
+        holder.nick = item.nick
         // 데이터를 뷰에 바인딩
-        holder.itemTextView.text = item.text
+        holder.itemTextView.text = item.title
         holder.itemImageView.setImageBitmap(item.imagebm)
 
         // 버튼에 클릭 리스너 설정 등 추가 작업 가능
         holder.itemButton.setOnClickListener {
-            showBottomSheetDialog(holder.itemView.context)
+            showBottomSheetDialog(holder.itemView.context,holder)
         }
     }
 
@@ -50,7 +57,7 @@ class RecyclerAdapter(private val data: List<MyItem>) : RecyclerView.Adapter<Rec
         return data.size
     }
 
-    private fun showBottomSheetDialog(context: Context) {
+    private fun showBottomSheetDialog(context: Context,holder: ViewHolder) {
         val inflater = LayoutInflater.from(context)
         val bottomSheetView = inflater.inflate(R.layout.waste_bottomsheet, null)
         val bottomSheetDialog = BottomSheetDialog(context, R.style.BottomSheetDialogTheme)
@@ -59,6 +66,10 @@ class RecyclerAdapter(private val data: List<MyItem>) : RecyclerView.Adapter<Rec
         bottomSheetView.findViewById<ImageView>(R.id.btn_close).setOnClickListener {
             bottomSheetDialog.dismiss()
         }
+        bottomSheetView.findViewById<TextView>(R.id.txt_ID).text = holder.nick
+        bottomSheetView.findViewById<TextView>(R.id.txt_TITLE).text = holder.title
+        bottomSheetView.findViewById<TextView>(R.id.txt_PRICE).text = holder.price + " ￦"
+        bottomSheetView.findViewById<ImageView>(R.id.image).setImageBitmap(holder.image)
 
         bottomSheetDialog.show()
     }

@@ -65,7 +65,7 @@ class ProductFragment : Fragment(),ProductCallback {
         initSearchView(this)
         val jsonData = JSONObject()
         //페이지에 다시 돌아와도 검색창에 텍스트가 있나 없나
-        jsonData.put("query", "SELECT * FROM Product WHERE title LIKE('%$search%');")
+        jsonData.put("query", "SELECT Product.*, User.name FROM Product JOIN User ON Product.userID = User.userID WHERE title LIKE('%$search%');")
         ReceiveProductData.receive(jsonData, requireContext(), this)
         return view
     }
@@ -74,7 +74,7 @@ class ProductFragment : Fragment(),ProductCallback {
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 val jsonData = JSONObject()
-                jsonData.put("query", "SELECT * FROM Product WHERE title LIKE('%$query%');")
+                jsonData.put("query", "SELECT Product.*, User.name FROM Product JOIN User ON Product.userID = User.userID WHERE title LIKE('%$search%');")
 
                 ReceiveProductData.receive(jsonData, requireContext(), callback)
                 return false

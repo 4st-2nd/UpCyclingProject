@@ -60,7 +60,10 @@ class ReceiveWasteData {
                             else
                                 image = ContextCompat.getDrawable(context, R.drawable.ic_launcher_foreground)?.toBitmap()!!
 
-                            data.add(RecyclerAdapter.MyItem(jsonArray.get(i).asJsonObject.getStringField("title"),  image))
+                            data.add(RecyclerAdapter.MyItem(jsonArray.get(i).asJsonObject.getStringField("title"),
+                                image,
+                                jsonArray.get(i).asJsonObject.getStringField("price"),
+                                jsonArray.get(i).asJsonObject.getStringField("name")))
                         }
                         callback.onFunctionCall(data)
                     }

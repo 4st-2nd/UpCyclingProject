@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory
 import android.util.Base64
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
+import com.example.upcyclingstore.Controller.ReceiveWasteData.Companion.getStringField
 import com.example.upcyclingstore.R
 import com.example.upcyclingstore.View.ProductCallback
 import com.example.upcyclingstore.View.WasteCallback
@@ -61,7 +62,10 @@ class ReceiveProductData {
                             else
                                 image = ContextCompat.getDrawable(context, R.drawable.ic_launcher_foreground)?.toBitmap()!!
 
-                            data.add(RecyclerAdapter.MyItem(jsonArray.get(i).asJsonObject.getStringField("title"),  image))
+                            data.add(RecyclerAdapter.MyItem(jsonArray.get(i).asJsonObject.getStringField("title"),
+                                image,
+                                jsonArray.get(i).asJsonObject.getStringField("price"),
+                                jsonArray.get(i).asJsonObject.getStringField("name")))
                         }
                         callback.onFunctionCall(data)
                     }
