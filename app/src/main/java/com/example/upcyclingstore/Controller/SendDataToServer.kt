@@ -10,7 +10,6 @@ import android.widget.Toast
 import androidx.core.graphics.drawable.toBitmap
 import com.example.upcyclingstore.R
 import com.example.upcyclingstore.View.LoginCallback
-import com.example.upcyclingstore.View.RegisterCallback
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -25,7 +24,7 @@ import java.io.ByteArrayOutputStream
 
 class SendDataToServer {
     companion object {
-        public fun send(jsonData: JSONObject, callback:RegisterCallback) {
+        public fun send(jsonData: JSONObject) {
             val url: String = "http://61.245.246.227:8089/send.php"
             GlobalScope.launch(Dispatchers.IO) {
                 try {
@@ -49,8 +48,6 @@ class SendDataToServer {
                     val jsonObject = JSONObject(responseBody) //json 파싱
                     // UI 스레드에서 결과 처리
                     withContext(Dispatchers.Main) {
-                        if (jsonObject.has("status"))
-                            callback.onFunctionCall()
                     }
 
                 } catch (e: Exception) {

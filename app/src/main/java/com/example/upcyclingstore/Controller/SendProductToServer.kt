@@ -1,7 +1,6 @@
 package com.example.upcyclingstore.Controller
 
 import android.util.Log
-import com.example.upcyclingstore.View.RegisterCallback
 import com.example.upcyclingstore.View.WriteProductCallback
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope

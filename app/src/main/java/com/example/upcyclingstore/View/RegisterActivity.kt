@@ -10,14 +10,8 @@ import com.example.upcyclingstore.databinding.ActivityRegisterBinding
 import com.example.upcyclingstore.Controller.SendDataToServer
 import org.json.JSONObject
 
-interface RegisterCallback {
-    fun onFunctionCall()
-}
-class RegisterActivity : AppCompatActivity(), RegisterCallback {
-    override fun onFunctionCall() {
-        val intent = Intent(this, LoginActivity::class.java)
-        startActivity(intent)
-    }
+class RegisterActivity : AppCompatActivity() {
+
     lateinit var b: ActivityRegisterBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +27,9 @@ class RegisterActivity : AppCompatActivity(), RegisterCallback {
                     "INSERT INTO User (username,password,email,name) VALUES ('${b.edtName.text.toString()}','${b.edtPass.text.toString()}','${b.edtEmail.text.toString()}','${b.edtNick.text.toString()}')"
                 )
 
-                SendDataToServer.send(jsonData, this)
+                SendDataToServer.send(jsonData)
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
             }
         }
     }

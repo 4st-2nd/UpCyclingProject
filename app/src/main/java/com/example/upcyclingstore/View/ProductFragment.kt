@@ -1,16 +1,14 @@
 package com.example.upcyclingstore.View
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.upcyclingstore.Controller.ProductRecyclerAdapter
 import com.example.upcyclingstore.Controller.ReceiveProductData
-import com.example.upcyclingstore.Controller.ReceiveWasteData
-import com.example.upcyclingstore.Controller.RecyclerAdapter
 import com.example.upcyclingstore.R
 import com.example.upcyclingstore.databinding.FragmentProductBinding
 import org.json.JSONObject
@@ -22,12 +20,12 @@ import org.json.JSONObject
  */
 
 interface ProductCallback {
-    fun onFunctionCall(data: List<RecyclerAdapter.MyItem>)
+    fun onFunctionCall(data: List<ProductRecyclerAdapter.MyItem>)
 }
 class ProductFragment : Fragment(),ProductCallback {
     var search: String = ""
-    override fun onFunctionCall(data: List<RecyclerAdapter.MyItem>) {
-        val adapter = RecyclerAdapter(data)
+    override fun onFunctionCall(data: List<ProductRecyclerAdapter.MyItem>) {
+        val adapter = ProductRecyclerAdapter(data)
         binding.recycler.adapter = adapter
     }
 
@@ -61,20 +59,23 @@ class ProductFragment : Fragment(),ProductCallback {
             transaction.commit()
         }
 
-        //서치뷰 리스너 작동 + 쿼리문 전달
+        return view
+    }
+
+    override fun onResume() {
+        super.onResume()
         initSearchView(this)
         val jsonData = JSONObject()
         //페이지에 다시 돌아와도 검색창에 텍스트가 있나 없나
-        jsonData.put("query", "SELECT Product.*, User.name FROM Product JOIN User ON Product.userID = User.userID WHERE title LIKE('%$search%');")
+        jsonData.put("query", "SELECT Product.*, User.name FROM Product JOIN User ON Product.userID = User.userID WHERE title LIKE('%$search%') AND amount > 0;")
         ReceiveProductData.receive(jsonData, requireContext(), this)
-        return view
     }
 
     private fun initSearchView(callback: ProductCallback) {
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 val jsonData = JSONObject()
-                jsonData.put("query", "SELECT Product.*, User.name FROM Product JOIN User ON Product.userID = User.userID WHERE title LIKE('%$search%');")
+                jsonData.put("query", "SELECT Product.*, User.name FROM Product JOIN User ON Product.userID = User.userID WHERE title LIKE('%$query%') AND amount > 0;")
 
                 ReceiveProductData.receive(jsonData, requireContext(), callback)
                 return false

@@ -49,7 +49,7 @@ class WasteFragment : Fragment(),WasteCallback {
 
         initSearchView(this)
         val jsonData = JSONObject()
-        jsonData.put("query", "SELECT Waste.*, User.name FROM Waste JOIN User ON Waste.userID = User.userID WHERE title LIKE('%$search%');")
+        jsonData.put("query", "SELECT Waste.*, User.name FROM Waste JOIN User ON Waste.userID = User.userID WHERE title LIKE('%$search%') AND amount > 0;")
         ReceiveWasteData.receive(jsonData,requireContext(),this)
         return view
     }
@@ -59,7 +59,7 @@ class WasteFragment : Fragment(),WasteCallback {
         {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 val jsonData = JSONObject()
-                jsonData.put("query", "SELECT Waste.*, User.name FROM Waste JOIN User ON Waste.userID = User.userID WHERE title LIKE('%$search%');")
+                jsonData.put("query", "SELECT Waste.*, User.name FROM Waste JOIN User ON Waste.userID = User.userID WHERE title LIKE('%$query%') AND amount > 0;")
 
                 ReceiveWasteData.receive(jsonData,requireContext(),callback)
                 return false

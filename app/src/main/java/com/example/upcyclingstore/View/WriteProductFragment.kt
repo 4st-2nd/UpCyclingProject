@@ -21,8 +21,6 @@ import androidx.fragment.app.Fragment
 import com.example.upcyclingstore.Controller.SendDataToServer
 import com.example.upcyclingstore.Controller.SendProductToServer
 import com.example.upcyclingstore.R
-import com.example.upcyclingstore.databinding.FragmentLobbyBinding
-import com.example.upcyclingstore.databinding.FragmentMypageBinding
 import org.json.JSONObject
 import java.io.ByteArrayOutputStream
 
@@ -64,7 +62,7 @@ class WriteProductFragment : Fragment(),WriteProductCallback {
             openGallery()
         }
         b.btnUpload.setOnClickListener {
-            if(b.edtTitle.text.toString() == "" || b.edtPrice.text.toString() == "" || b.edtDescription.text.toString() == "")
+            if(b.edtTitle.text.toString() == "" || b.edtPrice.text.toString() == "" || b.edtDescription.text.toString() == "" || b.edtAmount.text.toString() == "")
                 Toast.makeText(requireContext(), "상품 정보를 입력해주세요.", Toast.LENGTH_SHORT).show()
             else
             {
@@ -82,6 +80,10 @@ class WriteProductFragment : Fragment(),WriteProductCallback {
                 jsonData.put(
                     "description",
                     b.edtDescription.text.toString()
+                )
+                jsonData.put(
+                    "amount",
+                    b.edtAmount.text.toString()
                 )
                 jsonData.put(
                     "image",

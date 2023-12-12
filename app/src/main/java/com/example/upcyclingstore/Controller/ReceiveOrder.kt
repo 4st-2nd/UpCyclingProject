@@ -4,12 +4,11 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Base64
-import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
-import com.example.upcyclingstore.Controller.ReceiveProductData.Companion.getIntField
 import com.example.upcyclingstore.R
 import com.example.upcyclingstore.View.LobbyCallback
+import com.example.upcyclingstore.View.OrderCallback
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
@@ -23,9 +22,9 @@ import okhttp3.Request
 import okhttp3.RequestBody
 import org.json.JSONObject
 
-class ReceiveLobbyProduct {
+class ReceiveOrder {
     companion object {
-        public fun receive(jsonData: JSONObject, context: Context, callback: LobbyCallback) {
+        public fun receive(jsonData: JSONObject, context: Context, callback: OrderCallback) {
 
             val url = "http://61.245.246.227:8089/receive_array.php"
             GlobalScope.launch(Dispatchers.IO) {
@@ -49,7 +48,7 @@ class ReceiveLobbyProduct {
                     withContext(Dispatchers.Main)
                     {
                         //아이템으로 들어갈 데이터
-                        val data = mutableListOf<Lobby_Product_Adapter.LobbyItem>()
+                        val data = mutableListOf<OrderAdapter.MyItem>()
                         var image: Bitmap
                         for(i:Int in 0..<jsonArray.size())
                         {
@@ -60,17 +59,11 @@ class ReceiveLobbyProduct {
                             else
                                 image = ContextCompat.getDrawable(context, R.drawable.ic_launcher_foreground)?.toBitmap()!!
 
-                            data.add(Lobby_Product_Adapter.LobbyItem(
+                            data.add(OrderAdapter.MyItem(
                                 jsonArray.get(i).asJsonObject.getStringField("title"),
-                                jsonArray.get(i).asJsonObject.getStringField("description"),
-                                image,
-                                jsonArray.get(i).asJsonObject.getIntField("review"),
-                                jsonArray.get(i).asJsonObject.getFloatField("score"),
                                 jsonArray.get(i).asJsonObject.getIntField("price"),
-                                jsonArray.get(i).asJsonObject.getStringField("name"),
-                                jsonArray.get(i).asJsonObject.getIntField("amount"),
-                                jsonArray.get(i).asJsonObject.getIntField("productID")
-                                ))
+                                image,
+                            ))
                         }
                         callback.onFunctionCall(data)
                     }

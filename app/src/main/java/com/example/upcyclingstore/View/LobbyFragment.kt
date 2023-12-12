@@ -51,11 +51,14 @@ class LobbyFragment : Fragment(), LobbyCallback{
         //리사이클러 아이템 배치 설정
         b.lobbyProduct.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
-        val jsonData = JSONObject()
-        jsonData.put("query", "SELECT * FROM `Product` ORDER BY score DESC, review DESC;")
-
-        ReceiveLobbyProduct.receive(jsonData,requireContext(),this)
         return b.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val jsonData = JSONObject()
+        jsonData.put("query", "SELECT Product.*, User.name FROM Product JOIN User ON Product.userID = User.userID WHERE amount > 0 ORDER BY score DESC, review DESC LIMIT 5;")
+        ReceiveLobbyProduct.receive(jsonData,requireContext(),this)
     }
 
 

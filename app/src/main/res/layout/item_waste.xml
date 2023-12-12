@@ -5,7 +5,8 @@
         android:layout_height="wrap_content"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:id="@+id/productFull">
 
         <ImageView
             android:id="@+id/wasteImg"
@@ -47,7 +48,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/wasteName"
-            android:text="Buy"
+            android:text="자세히 보기"
             android:textColor="@color/white"
             android:background="@drawable/green_btn"/>
 

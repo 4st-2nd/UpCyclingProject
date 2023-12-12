@@ -39,9 +39,19 @@ class MypageFragment : Fragment() {
         val name = prefs.getString("name", "이름 오류")
         val email = prefs.getString("email", "이름 오류")
 
-        b.mypageId.text = "name : "+username.toString()
-        b.mypageNick.text = "nickname : "+name.toString()
-        b.mypageEmail.text = "email : "+email.toString()
+        b.txtName.text = name.toString()
+
+        b.txtOrder.setOnClickListener {
+                val newFragment = OrderFragment()
+                // 프래그먼트 트랜잭션 시작
+                val transaction = requireActivity().supportFragmentManager.beginTransaction()
+                // 트랜잭션에 새로운 프래그먼트 추가
+                transaction.replace(R.id.flFragment, newFragment)
+                // 백 스택에 추가하여 사용자가 뒤로가기 버튼을 눌렀을 때 이전 프래그먼트로 돌아갈 수 있도록 함
+                transaction.addToBackStack("my")
+                // 트랜잭션 커밋
+                transaction.commit()
+        }
 
         // Inflate the layout for this fragment
         return b.root

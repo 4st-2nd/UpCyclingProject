@@ -103,7 +103,6 @@
                         android:textColor="@color/text_main"
                         android:textSize="22sp"
                         android:textStyle="bold"
-
                         />
 
                 </LinearLayout>
@@ -165,7 +164,17 @@
                     android:layout_height="wrap_content"
                     android:text="건"
                     android:layout_marginStart="8dp"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:id="@+id/amountTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="남은 수량 : 555"
+                    android:textColor="@color/text_main"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    />
 
             </LinearLayout>
 
@@ -253,13 +262,7 @@
                 android:textColor="@color/text_main"
                 android:textSize="16dp"
                 android:textStyle="bold"
-                android:text="우리의 친환경 티셔츠는 지속가능한 모드로 제작되었습니다.
-
-우선, 이 티셔츠는 유기농 면, 대나무 또는 재활용 폴리에스터와 같은 자연 소재로 만들어졌습니다. 이는 환경에 해를 끼치지 않으면서도 편안하고 내구성 있게 제품을 만들 수 있도록 합니다.
-또한, 제조과정에서는 친환경한 방법을 사용하여 화학 물질 사용을 최소화하고, 에너지 소비를 줄이는 등 환경에 도움이 되는 방식으로 생산되었습니다. 이는 티셔츠를 구매하는 고객들이 환경 보호에 동참하고 있음을 느낄 수 있도록 합니다.
-
-더불어, 이 티셔츠는 편안한 착용감과 동시에 스타일리시한 디자인으로 제작되었습니다. 환경을 생각하는 동시에 패션적으로도 멋진 아이템으로써 즐겁게 착용하실 수 있을 거예요!
-
+                android:text="우리
 " />
 
             <LinearLayout
@@ -270,24 +273,24 @@
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/addToCartBtn"
                     style="@android:style/Widget.Button"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
+                    android:layout_weight="1"
                     android:background="@drawable/green_btn"
                     android:text="장바구니 담기"
-                    android:textColor="@color/white"
-                    tools:layout_weight="1" />
+                    android:textColor="@color/white" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button2"
+                    android:id="@+id/btn_buy"
                     style="@android:style/Widget.Button"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
+                    android:layout_weight="1"
                     android:background="@drawable/green_btn"
                     android:text="구매하기"
-                    android:textColor="@color/white"
-                    tools:layout_weight="1" />
+                    android:textColor="@color/white" />
 
 
             </LinearLayout>

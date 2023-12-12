@@ -6,6 +6,10 @@ import android.graphics.BitmapFactory
 import android.util.Base64
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
+import com.example.upcyclingstore.Controller.ReceiveLobbyProduct.Companion.getFloatField
+import com.example.upcyclingstore.Controller.ReceiveLobbyProduct.Companion.getIntField
+import com.example.upcyclingstore.Controller.ReceiveLobbyProduct.Companion.getStringField
+import com.example.upcyclingstore.Controller.ReceiveProductData.Companion.getStringField
 import com.example.upcyclingstore.Controller.ReceiveWasteData.Companion.getStringField
 import com.example.upcyclingstore.R
 import com.example.upcyclingstore.View.ProductCallback
@@ -51,7 +55,7 @@ class ReceiveProductData {
                     val jsonArray: JsonArray = JsonParser.parseString(responseBody).asJsonArray
                     withContext(Dispatchers.Main)
                     {
-                        val data = mutableListOf<RecyclerAdapter.MyItem>()
+                        val data = mutableListOf<ProductRecyclerAdapter.MyItem>()
                         var image: Bitmap
                         for(i:Int in 0..jsonArray.size() - 1)
                         {
@@ -62,10 +66,17 @@ class ReceiveProductData {
                             else
                                 image = ContextCompat.getDrawable(context, R.drawable.ic_launcher_foreground)?.toBitmap()!!
 
-                            data.add(RecyclerAdapter.MyItem(jsonArray.get(i).asJsonObject.getStringField("title"),
+                            data.add(ProductRecyclerAdapter.MyItem(
+                                jsonArray.get(i).asJsonObject.getStringField("title"),
+                                jsonArray.get(i).asJsonObject.getStringField("description"),
                                 image,
-                                jsonArray.get(i).asJsonObject.getStringField("price"),
-                                jsonArray.get(i).asJsonObject.getStringField("name")))
+                                jsonArray.get(i).asJsonObject.getIntField("review"),
+                                jsonArray.get(i).asJsonObject.getFloatField("score"),
+                                jsonArray.get(i).asJsonObject.getIntField("price"),
+                                jsonArray.get(i).asJsonObject.getStringField("name"),
+                                jsonArray.get(i).asJsonObject.getIntField("amount"),
+                                jsonArray.get(i).asJsonObject.getIntField("productID")
+                                ))
                         }
                         callback.onFunctionCall(data)
                     }

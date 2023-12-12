@@ -92,12 +92,26 @@
                 app:layout_constraintLeft_toLeftOf="@+id/image"
                 app:layout_constraintTop_toBottomOf="@+id/image" />
             <TextView
+                android:id="@+id/textView"
                 android:layout_width="0sp"
-                android:layout_height="100sp"
-                app:layout_constraintVertical_weight="1"
+                android:layout_height="wrap_content"
+                android:text="수량"
+                android:textSize="20dp"
+                android:textStyle="bold"
                 app:layout_constraintTop_toBottomOf="@+id/btn_imageUpload"
                 app:layout_constraintLeft_toLeftOf="@id/btn_imageUpload"/>
-
+            <EditText
+                android:id="@+id/edt_amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15sp"
+                app:layout_constraintLeft_toLeftOf="@+id/textView"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+            <TextView
+                android:layout_width="0sp"
+                android:layout_height="100sp"
+                app:layout_constraintTop_toBottomOf="@id/edt_amount"
+                app:layout_constraintLeft_toLeftOf="parent"/>
             <Button
                 android:id="@+id/btn_Upload"
                 android:layout_width="match_parent"
