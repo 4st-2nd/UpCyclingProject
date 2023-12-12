@@ -30,6 +30,8 @@
                         android:layout_weight="1"
                         android:textStyle="bold"
                         android:textSize="20sp"
+                        android:background="@drawable/green_btn"
+                        android:textColor="#FFFFFF"
                         android:text="상품 등록" />
 
 

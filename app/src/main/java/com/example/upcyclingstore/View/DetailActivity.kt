@@ -1,6 +1,7 @@
 package com.example.upcyclingstore.View
 
 import android.R.attr.defaultValue
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
@@ -60,6 +61,12 @@ class DetailActivity : AppCompatActivity(){
                 Toast.makeText(this, "상품 구매가 완료되었습니다.", Toast.LENGTH_SHORT).show()
                 super.onBackPressed()
             }
+        }
+
+        b.txtDetailComment.setOnClickListener {
+            val intent = Intent(this, CommentActivity::class.java)
+            intent.putExtra("productID",productID)
+            startActivity(intent)
         }
     }
 

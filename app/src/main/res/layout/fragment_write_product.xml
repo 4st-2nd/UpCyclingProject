@@ -88,6 +88,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="이미지 업로드"
+                android:background="@drawable/green_btn"
+                android:textColor="#FFFFFF"
                 app:layout_constraintVertical_weight="1"
                 app:layout_constraintLeft_toLeftOf="@+id/image"
                 app:layout_constraintTop_toBottomOf="@+id/image" />
@@ -116,7 +118,9 @@
                 android:id="@+id/btn_Upload"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="#FFFFFF"
                 android:text="상품 등록"
+                android:background="@drawable/green_btn"
                 app:layout_constraintBottom_toBottomOf="@+id/parent"
                 app:layout_constraintRight_toRightOf="@+id/parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
