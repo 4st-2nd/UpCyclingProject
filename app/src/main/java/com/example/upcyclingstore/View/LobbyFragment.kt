@@ -33,6 +33,8 @@ class LobbyFragment : Fragment(), LobbyCallback{
     override fun onFunctionCall(data: List<Lobby_Product_Adapter.LobbyItem>) {
         val lobby_adapter = Lobby_Product_Adapter(data)
         b.lobbyProduct.adapter = lobby_adapter
+        val lobby_adapter2 = Lobby_Product_Adapter(data)
+        b.lobbyProduct2.adapter = lobby_adapter
     }
     private val infiniteImageList = mutableListOf<Int>()
 
@@ -50,6 +52,7 @@ class LobbyFragment : Fragment(), LobbyCallback{
 
         //리사이클러 아이템 배치 설정
         b.lobbyProduct.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        b.lobbyProduct2.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
         return b.root
     }
